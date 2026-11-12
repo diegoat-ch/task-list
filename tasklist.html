@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi lista de tareas</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="contenedor">
+    <header class="page-header">
+      <h1>Mis tareas</h1>
+      <div class="background-controls">
+        <input
+          id="background-input"
+          class="visually-hidden"
+          type="file"
+          accept="image/png,image/jpeg,image/webp,image/gif"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+        <button id="choose-background" class="background-button" type="button">
+          Add background
+        </button>
+        <button id="remove-background" class="remove-background-button" type="button" hidden>
+          Quitar fondo
+        </button>
+      </div>
+    </header>
+    <p id="background-status" class="background-status" aria-live="polite"></p>
+
+    <section class="calendario" aria-labelledby="calendar-title">
+      <div class="calendar-header">
+        <button id="prev" class="nav-button" type="button" aria-label="Mes anterior">‹</button>
+        <h2 id="calendar-title"><span id="month-year"></span></h2>
+        <button id="next" class="nav-button" type="button" aria-label="Mes siguiente">›</button>
+      </div>
+      <div class="calendar-weekdays" aria-hidden="true">
+        <span>lun</span>
+        <span>mar</span>
+        <span>mié</span>
+        <span>jue</span>
+        <span>vie</span>
+        <span>sáb</span>
+        <span>dom</span>
+      </div>
+      <ul id="calendar-days" class="calendar-days" aria-label="Días del mes"></ul>
+    </section>
+
+    <form id="task-form">
+      <div class="formulario">
+        <div class="campo">
+          <label for="task-input">Nueva tarea</label>
+          <input
+            id="task-input"
+            type="text"
+            placeholder="Ej. Practicar JavaScript"
+            maxlength="100"
+            required
+          >
+        </div>
+        <div class="campo">
+          <label for="task-time">Horario</label>
+          <input id="task-time" type="time" required>
+        </div>
+        <div class="campo">
+          <label for="task-date">Fecha</label>
+          <input id="task-date" type="date" required>
+        </div>
+        <button type="submit">Agregar</button>
+      </div>
+    </form>
+
+    <ul id="task-list" aria-label="Lista de tareas"></ul>
+    <p id="empty-message">Todavía no tienes tareas.</p>
+  </main>
+
+  <aside class="robot-reminder" aria-labelledby="robot-title">
+    <div class="robot-avatar" aria-hidden="true">
+      <span class="robot-face">
+        <span class="robot-eye"></span>
+        <span class="robot-eye"></span>
+      </span>
+    </div>
+    <div class="robot-copy">
+      <strong id="robot-title">Robot recordatorio</strong>
+      <p id="reminder-message" aria-live="polite">Buscando tu próxima tarea...</p>
+    </div>
+  </aside>
+</body>
+</html> 

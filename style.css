@@ -1,0 +1,341 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem 7rem;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+body.has-background {
+  background-color: #f3f4f6;
+  background-image: var(--custom-background);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contenedor {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+}
+
+body.has-background .contenedor {
+  background: white;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+.background-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.background-button,
+.remove-background-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.6rem 0.8rem;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.remove-background-button {
+  background: #4b5563;
+}
+
+.remove-background-button[hidden] {
+  display: none;
+}
+
+#choose-background:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 3px;
+}
+
+.background-status {
+  min-height: 1.25rem;
+  margin: 0.5rem 0 0;
+  color: #4b5563;
+  font-size: 0.85rem;
+}
+
+.calendario {
+  margin: 1.5rem 0;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.nav-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: 6px;
+  background: #e5e7eb;
+  font-size: 1.5rem;
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.calendar-weekdays {
+  margin-bottom: 0.25rem;
+}
+
+.calendar-weekdays span {
+  padding: 0.25rem 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.calendar-empty,
+.calendar-days li {
+  min-width: 0;
+  min-height: 2.75rem;
+}
+
+.calendar-day {
+  width: 100%;
+  height: 100%;
+  min-height: 2.75rem;
+  padding: 0.35rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+}
+
+.calendar-day.is-today {
+  border-color: #2563eb;
+}
+
+.calendar-day.is-selected {
+  background: #2563eb;
+  color: white;
+}
+
+.calendar-day.has-tasks::after {
+  display: block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin: 0.15rem auto 0;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+input,
+button {
+  padding: 0.7rem;
+  font: inherit;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+#task-list {
+  padding: 0;
+  list-style: none;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.task-text {
+  flex: 1;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: #4b5563;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.task-time {
+  font-variant-numeric: tabular-nums;
+}
+
+.task.completed .task-text {
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.delete-button {
+  color: #b91c1c;
+}
+
+.robot-reminder {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(19rem, calc(100vw - 2rem));
+  padding: 0.8rem 1rem;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 8px 24px rgba(31, 41, 55, 0.18);
+}
+
+.robot-avatar {
+  display: grid;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 14px;
+  background: #dbeafe;
+}
+
+.robot-face {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 2rem;
+  height: 1.55rem;
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background: #2563eb;
+}
+
+.robot-face::before,
+.robot-face::after {
+  position: absolute;
+  left: 50%;
+  content: "";
+  transform: translateX(-50%);
+}
+
+.robot-face::before {
+  top: -0.35rem;
+  width: 2px;
+  height: 0.35rem;
+  background: #2563eb;
+}
+
+.robot-face::after {
+  top: -0.55rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #2563eb;
+}
+
+.robot-eye {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  background: white;
+}
+
+.robot-copy {
+  min-width: 0;
+}
+
+.robot-copy strong {
+  color: #1d4ed8;
+  font-size: 0.9rem;
+}
+
+.robot-copy p {
+  margin: 0.2rem 0 0;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 1rem;
+  }
+
+  .robot-reminder {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+}
